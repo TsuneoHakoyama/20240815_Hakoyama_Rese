@@ -1,9 +1,13 @@
 .main-content {
     background-color: #eee;
     padding: 30px 50px 300px;
+}
+
+.main-board {
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .shop-detail {
@@ -167,7 +171,6 @@
 
 .shop-tag {
     margin-top: 20px;
-    font-size: 11px;
 }
 
 .area-tag {
@@ -180,7 +183,6 @@
 
 .introduction {
     width: 100%;
-    font-size: 11px;
 }
 
 /* 予約フォーム */
@@ -221,7 +223,7 @@
 
 .description th {
     text-align: left;
-    width: 40%;
+    width: 50%;
 }
 
 .submit-btn {

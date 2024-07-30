@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/sanitize.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+
 </head>
 
 <body>
@@ -25,22 +26,13 @@
         </div>
         <nav class="menu" id="menu">
             <ul>
-                <li><a href="{{!! '/' !!}}">Home</a></li>
-                <li><a href="{{!! '/register' !!}}">Registration</a></li>
-                <li><a href="{{!! '/login' !!}}">Login</a></li>
+                <li><a href="{{ route('shop-all') }}">Home</a></li>
+                <li><a href="{{ route('register') }}">Registration</a></li>
+                <li><a href="{{ route('login') }}">Login</a></li>
             </ul>
         </nav>
 
         <!-- Login window -->
-        @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
         <div class="login-window">
             <div class="title-area">
                 <p>Login</p>
@@ -53,9 +45,19 @@
                             <i class="fa-solid fa-envelope"></i>
                             <input class="email" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
                         </div>
+                        <div class="error-message">
+                            @if($errors->has('email'))
+                            {{ $errors->first('email') }}
+                            @endif
+                        </div>
                         <div class="input__password">
                             <i class="fa-solid fa-lock"></i>
                             <input class="password" type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="error-message">
+                            @if($errors->has('password'))
+                            {{ $errors->first('password') }}
+                            @endif
                         </div>
                     </div>
                     <div class="submit-button">

@@ -8,7 +8,9 @@
 .title-logo {
     display: flex;
     align-items: center;
-    padding: 28px 0 0 50px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0 0;
 }
 
 /* ハンバーガーメニュー */
@@ -115,8 +117,8 @@
 /* ログインフォーム */
 .login-window {
     margin: 150px auto;
-    width: 350px;
-    height: 200px;
+    width: 500px;
+    height: 350px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 2px 2px 4px #666;
@@ -136,13 +138,17 @@
 
 .content {
     margin: 0 auto;
-    width: 90%;
-    padding: 20px 5px;
+    padding: 10px 20px;
 }
 
 .input-form {
     display: grid;
     text-align: center;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 16px;
 }
 
 .input__email {
@@ -153,6 +159,7 @@
 
 .email {
     margin: 10px auto;
+    padding: 15px;
     width: 90%;
     border: none;
     border-bottom: 1px solid #000;
@@ -166,18 +173,21 @@
 
 .password {
     margin: 10px auto;
+    padding: 15px;
     width: 90%;
     border: none;
     border-bottom: 1px solid #000;
 }
 
 .submit-button {
-    margin-top: 15px;
-    text-align: right;
+    display: inline-block;
+    width: 35%;
+    margin-left: 315px;
+    padding: 20px;
 }
 
 .login-btn {
-    padding: 5px;
+    padding: 10px 20px;
     color: #fff;
     background-color: #005fff;
     border: none;

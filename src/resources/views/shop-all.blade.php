@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop_all</title>
-    <link rel="stylesheet" href="css/sanitize.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/shop-all.css">
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shop-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+
 </head>
 
 <body>
@@ -27,29 +28,36 @@
                 </div>
                 <nav class="menu" id="menu">
                     <ul>
-                        <li><a href="{{!! '/' !!}}">Home</a></li>
+                        <li><a href="{{ route('shop-all') }}">Home</a></li>
                         <li><a href="{{ route('logout') }}">Logout</a></li>
-                        <li><a href="{{!! '/mypage' !!}}">Mypage</a></li>
+                        <li><a href="{{ '/mypage' }}">Mypage</a></li>
                     </ul>
                 </nav>
             </div>
-            <form action="" method="post" class="search-box">
+            <form action="/search" method="post" class="search-box">
+                @csrf
                 <div class="input-form">
                     <div class="select-area">
-                        <select name="area" id="" place>
+                        <select name="area" id="">
                             <option value="" selected>All area</option>
+                            @foreach ($prefectures as $prefecture)
+                            <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="select-genre">
                         <select name="genre" id="">
                             <option value="" selected>All genre</option>
+                            @foreach ($genres as $genre)
+                            <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="glass">
                         <i class="fa-solid fa-magnifying-glass glass-custom"></i>
                     </div>
                     <div class="search-word">
-                        <input type="text" name="word" placeholder="Search ..." id="">
+                        <input type="text" name="keyword" placeholder="Search ..." id="">
                     </div>
                     <div class="search-btn">
                         <button type="submit">検索</button>
@@ -58,21 +66,28 @@
             </form>
         </div>
 
+        </div>
+
         <div class="main-content">
             <div class="grid">
+                @foreach ($shops as $shop)
                 <div class="shop-card">
                     <div class="shop-image">
-                        <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="店舗画像">
+                        <img src="{{ $shop->image }}" alt="店舗画像">
                     </div>
                     <div class="shop-info">
-                        <div class="shop-name">仙人</div>
+                        <div class="shop-name">{{ $shop->name }}</div>
                         <div class="shop-tag">
-                            <div class="area-tag">#東京都</div>
-                            <div class="genre-tag">#寿司</div>
+                            <div class="area-tag">#{{ $shop->prefecture->name }}</div>
+                            <div class="genre-tag">#{{ $shop->genre->name }}</div>
                         </div>
                         <div class="more-info">
                             <div class="for-detail">
-                                <a href="">詳しくみる</a>
+                                <form action="/detail" method="get">
+                                    @csrf
+                                    <button type="submit">詳しくみる</button>
+                                    <input type="hidden" name="shopId" value="{{ $shop->id }}">
+                                </form>
                             </div>
                             <div class="favorite">
                                 <i class="fa-solid fa-heart heart-custom"></i>
@@ -80,86 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shop-card">
-                    <div class="shop-image">
-                        <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="店舗画像">
-                    </div>
-                    <div class="shop-info">
-                        <div class="shop-name">店舗名</div>
-                        <div class="shop-tag">
-                            <div class="area-tag">#東京都</div>
-                            <div class="genre-tag">#寿司</div>
-                        </div>
-                        <div class="more-info">
-                            <div class="for-detail">
-                                <a href="">詳しくみる</a>
-                            </div>
-                            <div class="favorite">
-                                <i class="fa-solid fa-heart heart-custom"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shop-card">
-                    <div class="shop-image">
-                        <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="店舗画像">
-                    </div>
-                    <div class="shop-info">
-                        <div class="shop-name">店舗名</div>
-                        <div class="shop-tag">
-                            <div class="area-tag">#東京都</div>
-                            <div class="genre-tag">#寿司</div>
-                        </div>
-                        <div class="more-info">
-                            <div class="for-detail">
-                                <a href="">詳しくみる</a>
-                            </div>
-                            <div class="favorite">
-                                <i class="fa-solid fa-heart heart-custom"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shop-card">
-                    <div class="shop-image">
-                        <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="店舗画像">
-                    </div>
-                    <div class="shop-info">
-                        <div class="shop-name">店舗名</div>
-                        <div class="shop-tag">
-                            <div class="area-tag">#東京都</div>
-                            <div class="genre-tag">#寿司</div>
-                        </div>
-                        <div class="more-info">
-                            <div class="for-detail">
-                                <a href="">詳しくみる</a>
-                            </div>
-                            <div class="favorite">
-                                <i class="fa-solid fa-heart heart-custom"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shop-card">
-                    <div class="shop-image">
-                        <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="店舗画像">
-                    </div>
-                    <div class="shop-info">
-                        <div class="shop-name">店舗名</div>
-                        <div class="shop-tag">
-                            <div class="area-tag">#東京都</div>
-                            <div class="genre-tag">#寿司</div>
-                        </div>
-                        <div class="more-info">
-                            <div class="for-detail">
-                                <a href="">詳しくみる</a>
-                            </div>
-                            <div class="favorite">
-                                <i class="fa-solid fa-heart heart-custom"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </main>

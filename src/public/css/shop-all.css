@@ -1,14 +1,16 @@
 .main {
+    width: 100%;
+    height: 100%;
     background-color: #eee;
-    padding: 30px 50px 300px;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
+    padding: 50px 0 0;
 }
 
 /* メニューボタンとタイトルロゴ */
@@ -88,7 +90,7 @@
     top: 0;
     left: -50px;
     width: 105%;
-    height: 100vh;
+    height: 100%;
     background-color: #fff;
     text-align: center;
     font-size: 28px;
@@ -133,39 +135,53 @@
     justify-content: flex-end;
 }
 
+.select-area {
+    width: 4em;
+}
+
 .select-area select {
     border: none;
     padding: 5px;
+    font-size: 14px;
+}
+
+.select-genre {
+    width: 5em;
 }
 
 .select-genre select {
     border: none;
     padding: 5px;
-    margin-left: 5px;
+    font-size: 14px;
 }
 
 .glass-custom {
-    font-size: 1em;
+    font-size: 0.8em;
     color: #ddd;
     padding: 5px;
-    margin-left: 5px;
+}
+
+.search-word {
+    width: 6em;
+    
 }
 
 .search-word input {
     border: none;
     padding: 5px;
-    margin-left: 5px;
+    width: 8em;
+    font-size: 14px;
 }
 
 .search-btn button {
     border: 1px solid #ddd;
-
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 /* 店舗情報 */
 .main-content {
-    width: 100%;
+    width: 80%;
     margin: 30px auto;
 }
 
@@ -220,11 +236,12 @@
 }
 
 
-.for-detail a {
+.for-detail button {
     padding: 5px 10px;
     background-color: #005fff;
     color: #fff;
     text-decoration: none;
+    border: none;
     border-radius: 5px;
     font-size: 10px;
 }

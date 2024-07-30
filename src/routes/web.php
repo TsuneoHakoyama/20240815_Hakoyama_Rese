@@ -18,11 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/register', [AuthController::class, 'create'])->name('register');
 Route::post('/register', [AuthController::class, 'store']);
 
-Route::get('login', [AuthController::class, 'login'])->name('login');
-Route::post('login', [AuthController::class, 'postlogin']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'postlogin']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'destroy']);
-    Route::get('/', [ShopController::class, 'view']);
+    Route::get('/', [ShopController::class, 'show'])->name('shop-all');
+    Route::post('/search', [ShopController::class, 'search']);
+    route::get('detail', [ShopController::class, 'showDetail']);
 });
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Shop extends Model
 {
@@ -18,13 +19,18 @@ class Shop extends Model
         'image',
     ];
 
-    public function genres(): BelongsTo
+    public function genre(): BelongsTo
     {
-        return $this->belongsTo(Genre::class);
+        return $this->belongsTo(Genre::class, 'genre_id');
     }
 
-    public function prefectures(): BelongsTo
+    public function prefecture(): BelongsTo
     {
-        return $this->belongsTo(Prefecture::class);
+        return $this->belongsTo(Prefecture::class, 'prefecture_id');
+    }
+
+    public function favorites(): HasMany
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

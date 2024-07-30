@@ -75,8 +75,6 @@ class AuthController extends Controller
 
         event(new Registered($user = $creator->create($request->all())));
 
-        $this->guard->login($user);
-
         return app(RegisterResponse::class);
     }
 
