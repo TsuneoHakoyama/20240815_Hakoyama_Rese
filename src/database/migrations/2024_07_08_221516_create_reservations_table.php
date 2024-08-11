@@ -15,10 +15,12 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id')->constrained();
+            $table->foreignId('shop_id');
             $table->foreignId('user_id')->constrained();
-            $table->timestamps();
+            $table->date('date');
+            $table->time('time');
             $table->integer('people');
+            $table->timestamps();
         });
     }
 

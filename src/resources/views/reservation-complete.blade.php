@@ -24,9 +24,9 @@
         </div>
         <nav class="menu" id="menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Logout</a></li>
-                <li><a href="#">Mypage</a></li>
+                <li><a href="{{ route('shop-all') }}">Home</a></li>
+                <li><a href="{{ route('logout') }}">Logout</a></li>
+                <li><a href="{{ route('mypage') }}">Mypage</a></li>
             </ul>
         </nav>
 
@@ -36,7 +36,7 @@
                 <p>ご予約ありがとうございます</p>
             </div>
             <div class="button">
-                <a href="">戻る</a>
+                <a href="{{ route('back-home') }}">戻る</a>
             </div>
         </div>
     </main>

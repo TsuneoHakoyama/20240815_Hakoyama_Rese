@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorite;
 use App\Models\Genre;
+use App\Models\People;
 use App\Models\Prefecture;
 use App\Models\Shop;
+use App\Models\Time;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -14,8 +18,10 @@ class ShopController extends Controller
     {
         $prefectures = Prefecture::all();
         $genres = Genre::all();
+        $shops = Shop::with(['genres', 'prefectures', 'favorites' => function ($query) {
+            $query->where('user_id', Auth::id());
+        }])->get();
 
-        $shops = Shop::with(['genre', 'prefecture'])->get();
         return view('shop-all', compact('shops', 'prefectures', 'genres'));
     }
 
@@ -50,12 +56,21 @@ class ShopController extends Controller
     }
 
     public function showDetail(Request $request) {
-        $shopId = $request->shopId;
-        $details = Shop::where('id', $shopId)->get();
-        $prefectures = Prefecture::all();
-        $genres = Genre::all();
-        return view('shop-detail', compact('details', 'prefectures', 'genres'));
+        $shopId = $request->shop_id;
+        $details = Shop::where('id', $shopId)
+            ->with(['genres', 'prefectures'])
+            ->get();
+
+        $date = Carbon::now()->format('Y/m/d');
+        $time = Carbon::now()->format('H:i');
+        $reserve_times = Time::all();
+        $peoples = People::all();
+
+        return view('shop-detail', compact(['details', 'shopId', 'date', 'time', 'reserve_times', 'peoples']));
     }
+
+
+
 
 
 }

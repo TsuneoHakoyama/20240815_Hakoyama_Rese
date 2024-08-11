@@ -63,10 +63,8 @@ class AuthController extends Controller
      * @param  \Laravel\Fortify\Contracts\CreatesNewUsers  $creator
      * @return \Laravel\Fortify\Contracts\RegisterResponse
      */
-    public function store(
-        RegisterRequest $request,
-        CreatesNewUsers $creator
-    ): RegisterResponse {
+    public function store(RegisterRequest $request, CreatesNewUsers $creator)
+    {
         if (config('fortify.lowercase_usernames')) {
             $request->merge([
                 Fortify::username() => Str::lower($request->{Fortify::username()}),
@@ -75,7 +73,8 @@ class AuthController extends Controller
 
         event(new Registered($user = $creator->create($request->all())));
 
-        return app(RegisterResponse::class);
+        return view('auth.thanks');
+
     }
 
     /**
@@ -95,7 +94,7 @@ class AuthController extends Controller
      * @param  \App\Http\Requests\LoginRequest  $request
      * @return mixed
      */
-    public function postlogin(LoginRequest $request)
+    public function postLogin(LoginRequest $request)
     {
         return $this->loginPipeline($request)->then(function ($request) {
             return app(LoginResponse::class);

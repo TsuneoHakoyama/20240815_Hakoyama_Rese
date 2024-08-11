@@ -24,9 +24,9 @@
         </div>
         <nav class="menu" id="menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Registration</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="{{ route('shop-all') }}">Home</a></li>
+                <li><a href="{{ route('register') }}">Registration</a></li>
+                <li><a href="{{ route('login') }}">Login</a></li>
             </ul>
         </nav>
 
@@ -36,7 +36,7 @@
                 <p>会員登録ありがとうございます</p>
             </div>
             <div class="button">
-                <a href="">ログインする</a>
+                <a href="{{ route('login') }}">ログインする</a>
             </div>
         </div>
     </main>

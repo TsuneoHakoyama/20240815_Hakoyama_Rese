@@ -6,14 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Favorite extends Model
+class Reservation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'shop_id',
         'user_id',
-        'shop_id'
+        'date',
+        'time',
+        'people'
     ];
+
+    public function peoples(): BelongsTo
+    {
+        return $this->belongsTo(People::class);
+    }
 
     public function shops(): BelongsTo
     {

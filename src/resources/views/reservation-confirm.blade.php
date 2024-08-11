@@ -7,7 +7,7 @@
     <title>Shop-detail</title>
     <link rel="stylesheet" href="css/sanitize.css">
     <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/shop-detail.css">
+    <link rel="stylesheet" href="css/reservation-confirm.css">
 </head>
 
 <body>
@@ -60,55 +60,49 @@
                 <div class="title">
                     <p>予約</p>
                 </div>
-                <form action="/confirm" method="post">
+                <div class="input-form">
+                    <div class="input__date">
+                        <input type="date" name="date" id="" value="{{ $confirm['date'] }}">
+                    </div>
+                    <div class="input__time">
+                        <select name="time" id="">
+                            <option value="">{{ $confirm['time'] }}</option>
+                        </select>
+                    </div>
+                    <div class="input__people">
+                        <select name="people" id="">
+                            <option value="">{{ $confirm['people' ]}}人</option>
+                        </select>
+                    </div>
+                </div>
+                <form action="/reservation" method="post">
                     @csrf
-                    <div class="input-form">
+                    <div class="confirm-window">
                         <div class="input-hidden">
                             <input type="hidden" name="shop_id" value="{{ $shopId }}">
                         </div>
-                        <div class="input__date">
-                            <input type="date" name="date" id="" value="">
-                        </div>
-                        <div class="input__time">
-                            <select name="time" id="">
-                                <option value="">00:00</option>
-                                @foreach ($reserve_times as $reserve_time)
-                                <option value="{{ $reserve_time->time }}">{{ $reserve_time->time }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="input__people">
-                            <select name="people" id="">
-                                <option value="">0人</option>
-                                @foreach ($peoples as $people)
-                                <option value="{{ $people->id }}">{{ $people->people }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="confirm-window">
                         <table class="description">
                             <tr>
                                 <th>Shop</th>
-                                <td></td>
+                                <td>{{ $detail->name }}</td>
                             </tr>
                             <tr>
                                 <th>Date</th>
-                                <td></td>
+                                <td><input type="date" name="date" value="{{ $confirm['date'] }}" readonly /></td>
                             </tr>
                             <tr>
                                 <th>Time</th>
-                                <td></td>
+                                <td><input type="time" name="time" value="{{ $confirm['time'] }}" readonly /></td>
                             </tr>
                             <tr>
                                 <th>Number</th>
-                                <td></td>
+                                <td><input type="text" name="people" value="{{ $confirm['people'] }}" readonly /></td>
                             </tr>
                         </table>
                     </div>
-                    <livewire:reserve-confirm>
                     <div class="submit-btn">
-                        <button type="submit">確認する</button>
+                        <button class="rollback" type="submit" name="back" value="back">修正する</button>
+                        <button class="reserve" type="submit">予約する</button>
                     </div>
                 </form>
             </div>

@@ -1,7 +1,10 @@
+body {
+    background-color: #eee;
+}
+
 .main {
     width: 100%;
     height: 100%;
-    background-color: #eee;
 }
 
 .header {
@@ -163,7 +166,7 @@
 
 .search-word {
     width: 6em;
-    
+
 }
 
 .search-word input {
@@ -249,9 +252,19 @@
 .favorite {
     display: inline-block;
     margin-right: 0;
+}
+
+.favorite button {
+    background-color: #fff;
+    border: none;
+}
+
+.heart-inactive {
+    font-size: 1.5em;
     color: #ddd;
 }
 
-.heart-custom {
+.heart-active {
     font-size: 1.5em;
+    color: #f00;
 }

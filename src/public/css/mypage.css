@@ -1,13 +1,24 @@
-.main-content {
+body {
     background-color: #eee;
-    padding: 19px 50px 300px;
+}
+
+.main-board {
+    background-color: #eee;
+    height: 100%;
+}
+
+.main-content {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #eee;
+    padding: 50px 0 300px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .book-status {
     width: 35%;
+    margin-top: 0;
     background-color: #eee;
     border: none;
 }
@@ -93,7 +104,7 @@
     top: 0;
     left: -50px;
     width: 105%;
-    height: 100vh;
+    height: 100%;
     background-color: #fff;
     text-align: center;
     font-size: 28px;
@@ -256,11 +267,12 @@
 }
 
 
-.for-detail a {
+.for-detail button {
     padding: 5px 10px;
     background-color: #005fff;
     color: #fff;
     text-decoration: none;
+    border: none;
     border-radius: 5px;
     font-size: 10px;
 }
@@ -268,9 +280,19 @@
 .favorite {
     display: inline-block;
     margin-right: 0;
+}
+
+.favorite button {
+    background-color: #fff;
+    border: none;
+}
+
+.heart-inactive {
+    font-size: 1.5em;
     color: #ddd;
 }
 
-.heart-custom {
+.heart-active {
     font-size: 1.5em;
+    color: #f00;
 }

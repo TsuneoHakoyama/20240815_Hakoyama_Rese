@@ -78,19 +78,36 @@
                     <div class="shop-info">
                         <div class="shop-name">{{ $shop->name }}</div>
                         <div class="shop-tag">
-                            <div class="area-tag">#{{ $shop->prefecture->name }}</div>
-                            <div class="genre-tag">#{{ $shop->genre->name }}</div>
+                            <div class="area-tag">#{{ $shop->prefectures->name }}</div>
+                            <div class="genre-tag">#{{ $shop->genres->name }}</div>
                         </div>
                         <div class="more-info">
                             <div class="for-detail">
                                 <form action="/detail" method="get">
                                     @csrf
                                     <button type="submit">詳しくみる</button>
-                                    <input type="hidden" name="shopId" value="{{ $shop->id }}">
+                                    <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                 </form>
                             </div>
                             <div class="favorite">
-                                <i class="fa-solid fa-heart heart-custom"></i>
+                                @if ($shop->favorites->isNotEmpty())
+                                <form action="/delete-favorite" method="post">
+                                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">
+                                        <i class="fa-solid fa-heart heart-active"></i>
+                                    </button>
+                                </form>
+                                @else
+                                <form action="/favorite" method="post">
+                                    @csrf
+                                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-heart heart-inactive"></i>
+                                    </button>
+                                </form>
+                                @endif
                             </div>
                         </div>
                     </div>
