@@ -27,15 +27,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'destroy']);
     Route::get('/', [ShopController::class, 'show'])->name('shop-all');
     Route::post('/search', [ShopController::class, 'search']);
-    Route::get('/detail', [ShopController::class, 'showDetail']);
+    Route::get('/detail/{id}', [ShopController::class, 'showDetail'])->name('detail');
     Route::post('/favorite', [FavoriteController::class, 'store']);
     Route::delete('/delete-favorite', [FavoriteController::class, 'favoriteDestroy']);
     Route::post('/confirm', [ReservationController::class, 'confirm']);
     Route::post('/reservation', [ReservationController::class, 'reservation']);
-    Route::delete('/reservation-cancel', [MyPageController::class, 'cancel']);
+    Route::delete('/cancel', [ReservationController::class, 'cancel']);
     Route::post('/', [ShopController::class, 'show'])->name('back-home');
     Route::get('/mypage', [MyPageController::class, 'show'])->name('mypage');
-    Route::delete('/delete-mypage', [MyPageController::class, 'destroy']);
+    Route::delete('/delete', [MyPageController::class, 'destroy']);
 
 });
-

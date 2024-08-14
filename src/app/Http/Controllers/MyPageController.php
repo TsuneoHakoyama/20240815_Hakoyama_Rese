@@ -12,18 +12,15 @@ class MyPageController extends Controller
 {
     public function show()
     {
-        $my_shops = Shop::with(['reservations', 'favorites' => function ($query) {
+        $my_reservations = Shop::with(['reservations' => function ($query) {
             $query->where('user_id', Auth::id());
         }])->get();
 
-            return view('my-page', compact('my_shops'));
-    }
+        $my_favorites = Shop::with(['favorites' => function ($query) {
+            $query->where('user_id', Auth::id());
+        }])->get();
 
-    public function cancel(Request $request)
-    {
-        Reservation::find($request->reservation_id)->delete();
-
-        return redirect()->route('mypage', [$request->shop_id]);
+        return view('my-page', compact('my_reservations', 'my_favorites'));
     }
 
     public function destroy(Request $request)

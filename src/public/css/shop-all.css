@@ -239,7 +239,7 @@ body {
 }
 
 
-.for-detail button {
+.for-detail a {
     padding: 5px 10px;
     background-color: #005fff;
     color: #fff;

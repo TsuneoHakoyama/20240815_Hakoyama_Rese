@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop-detail</title>
-    <link rel="stylesheet" href="css/sanitize.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/shop-detail.css">
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shop-detail.css') }}">
 </head>
 
 <body>
@@ -63,11 +63,18 @@
                 <form action="/confirm" method="post">
                     @csrf
                     <div class="input-form">
+                        @foreach ($details as $detail)
                         <div class="input-hidden">
-                            <input type="hidden" name="shop_id" value="{{ $shopId }}">
+                            <input type="hidden" name="shop_id" value="{{ $detail->id }}">
                         </div>
+                        @endforeach
                         <div class="input__date">
                             <input type="date" name="date" id="" value="">
+                        </div>
+                        <div class="error-message">
+                            @if($errors->has('date'))
+                            {{ $errors->first('date') }}
+                            @endif
                         </div>
                         <div class="input__time">
                             <select name="time" id="">
@@ -77,6 +84,11 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div>
+                            @if($errors->has('time'))
+                            {{ $errors->first('time') }}
+                            @endif
+                        </div>
                         <div class="input__people">
                             <select name="people" id="">
                                 <option value="">0人</option>
@@ -84,6 +96,11 @@
                                 <option value="{{ $people->id }}">{{ $people->people }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div>
+                            @if($errors->has('people'))
+                            {{ $errors->first('people') }}
+                            @endif
                         </div>
                     </div>
                     <div class="confirm-window">
@@ -106,7 +123,6 @@
                             </tr>
                         </table>
                     </div>
-                    <livewire:reserve-confirm>
                     <div class="submit-btn">
                         <button type="submit">確認する</button>
                     </div>
@@ -114,7 +130,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- javascript for hamburger menu -->
     <script>

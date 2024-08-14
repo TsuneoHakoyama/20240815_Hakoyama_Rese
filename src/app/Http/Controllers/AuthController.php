@@ -147,4 +147,5 @@ class AuthController extends Controller
 
         return app(LogoutResponse::class);
     }
+
 }

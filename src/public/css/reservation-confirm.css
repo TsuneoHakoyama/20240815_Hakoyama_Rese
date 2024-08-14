@@ -224,12 +224,7 @@
 
 .description th {
     text-align: left;
-    width: 60%;
-}
-
-.description td {
-    width: 40%;
-    font-weight: bold;
+    width: 50%;
 }
 
 .description input {
@@ -237,7 +232,6 @@
     background-color: #2C7CFF;
     color: #fff;
     border: none;
-    font-weight: bold;
     align-items: start;
 }
 

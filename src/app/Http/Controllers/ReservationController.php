@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReservationRequest;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Shop;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
-    public function confirm(Request $request)
+    public function confirm(ReservationRequest $request)
     {
         $shopId = $request->shop_id;
         $details = Shop::where('id', $shopId)
@@ -39,7 +40,8 @@ class ReservationController extends Controller
     public function reservation(Request $request)
     {
         if ($request->input('back') == 'back') {
-            return redirect('shop-detail')->withInput();
+            $shop_id = $request->input('shop_id');
+            return redirect()->route('detail', ['id' => $shop_id]);
         }
 
         $request['user_id'] = Auth::id();
@@ -55,4 +57,12 @@ class ReservationController extends Controller
 
         return view('reservation-complete');
     }
+
+    public function cancel(Request $request)
+    {
+        Reservation::find($request->reservation_id)->delete();
+
+        return redirect()->route('mypage', [$request->shop_id]);
+    }
+
 }

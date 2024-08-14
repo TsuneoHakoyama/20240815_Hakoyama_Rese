@@ -83,11 +83,7 @@
                         </div>
                         <div class="more-info">
                             <div class="for-detail">
-                                <form action="/detail" method="get">
-                                    @csrf
-                                    <button type="submit">詳しくみる</button>
-                                    <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                                </form>
+                                <a href="{{ route('detail', ['id' => $shop->id]) }}">詳しくみる</a>
                             </div>
                             <div class="favorite">
                                 @if ($shop->favorites->isNotEmpty())

@@ -36,9 +36,10 @@
                 <div class="column-title">
                     予約状況
                 </div>
-                @foreach ($my_shops as $shop)
-                @if ($shop->reservations->isNotEmpty())
-                @foreach ($shop->reservations as $reservation)
+
+                @foreach ($my_reservations as $my_reservation)
+                @if ($my_reservation->reservations->isNotEmpty())
+                @foreach ($my_reservation->reservations as $reservation)
                 <div class="book-card">
                     <div class="card-header">
                         <div class="header__inner">
@@ -50,12 +51,12 @@
                             </div>
                         </div>
                         <div class="cancel-btn">
-                            <form action="/reservation-cancel" method="post">
+                            <form action="/cancel" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">
                                     <i class="fa-regular fa-circle-xmark xmark-custom"></i>
-                                    <input type="hidden" name="shop_id" value="{{ $shop->id }} ">
+                                    <input type="hidden" name="shop_id" value="{{ $my_reservation->id }} ">
                                     <input type="hidden" name="reservation_id" value="{{ $reservation->id }} ">
                             </form>
                         </div>
@@ -64,7 +65,7 @@
                         <table class="description">
                             <tr>
                                 <th>Shop</th>
-                                <td>{{ $shop->name }}</td>
+                                <td>{{ $my_reservation->name }}</td>
                             </tr>
                             <tr>
                                 <th>Date</th>
@@ -94,7 +95,7 @@
                     お気に入り店舗
                 </div>
                 <div class="grid">
-                    @foreach($my_shops as $my_favorite)
+                    @foreach($my_favorites as $my_favorite)
                     @if ($my_favorite->favorites->isNotEmpty())
                     <div class="shop-card">
                         <div class="shop-image">
@@ -115,7 +116,7 @@
                                     </form>
                                 </div>
                                 <div class="favorite">
-                                    <form action="/delete-mypage" method="post">
+                                    <form action="/delete" method="post">
                                         <input type="hidden" name="shop_id" value="{{$my_favorite->id}}">
                                         @csrf
                                         @method('DELETE')

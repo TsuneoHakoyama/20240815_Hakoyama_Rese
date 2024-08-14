@@ -55,9 +55,9 @@ class ShopController extends Controller
         return $query;
     }
 
-    public function showDetail(Request $request) {
-        $shopId = $request->shop_id;
-        $details = Shop::where('id', $shopId)
+    public function showDetail(Shop $id)
+    {
+        $details = Shop::where('id', $id->id)
             ->with(['genres', 'prefectures'])
             ->get();
 
@@ -66,7 +66,7 @@ class ShopController extends Controller
         $reserve_times = Time::all();
         $peoples = People::all();
 
-        return view('shop-detail', compact(['details', 'shopId', 'date', 'time', 'reserve_times', 'peoples']));
+        return view('shop-detail', compact(['details', 'date', 'time', 'reserve_times', 'peoples']));
     }
 
 

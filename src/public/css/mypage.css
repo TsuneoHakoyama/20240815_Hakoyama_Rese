@@ -192,14 +192,14 @@ body {
 }
 
 .description {
-    width: 80%;
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0 10px;
 }
 
 .description th {
     text-align: left;
-    width: 50%;
+    width: 45%;
 }
 
 /* お気に入り店舗 */
