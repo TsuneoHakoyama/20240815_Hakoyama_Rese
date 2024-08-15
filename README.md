@@ -40,7 +40,7 @@
 ###### MailHog
 
 ## テーブル設計
-
+![Table_design](https://github.com/user-attachments/assets/7eb83b45-cbed-4f81-9d70-51f81db72245)
 
 ## ER図
 ![ER](https://github.com/user-attachments/assets/f5fc6b97-d105-42d8-8177-1bcd56368654)
