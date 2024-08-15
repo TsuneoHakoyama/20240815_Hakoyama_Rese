@@ -40,10 +40,10 @@
 ###### MailHog
 
 ## テーブル設計
-![ER](https://github.com/user-attachments/assets/f5fc6b97-d105-42d8-8177-1bcd56368654)
+
 
 ## ER図
-[table_design.pdf](https://github.com/user-attachments/files/16625481/table_design.pdf)
+![ER](https://github.com/user-attachments/assets/f5fc6b97-d105-42d8-8177-1bcd56368654)
    
 ## 環境構築
 ###### Dockerビルド
