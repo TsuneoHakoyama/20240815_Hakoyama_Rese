@@ -1,7 +1,7 @@
 # Rese
 ###### 概要:飲食店予約アプリ
- <-- トップ画面の画像 -->
- 
+ ![Topview](https://github.com/user-attachments/assets/41964cd4-41d8-4635-a247-3660c737192a)
+
 ## 作成目的
 ###### 自社の飲食店予約サービスを持ちたい
 
@@ -40,10 +40,10 @@
 ###### MailHog
 
 ## テーブル設計
-   <-- 作成したテーブル設計の画像 -->
+![ER](https://github.com/user-attachments/assets/f5fc6b97-d105-42d8-8177-1bcd56368654)
 
 ## ER図
-   <-- 作成したER図の画像 -->
+[table_design.pdf](https://github.com/user-attachments/files/16625481/table_design.pdf)
    
 ## 環境構築
 ###### Dockerビルド
