@@ -1,6 +1,6 @@
 # Rese
 ###### 概要:飲食店予約アプリ
- ![Topview](https://github.com/user-attachments/assets/41964cd4-41d8-4635-a247-3660c737192a)
+<img src="https://github.com/user-attachments/assets/41964cd4-41d8-4635-a247-3660c737192a" width="100">
 
 ## 作成目的
 ###### 自社の飲食店予約サービスを持ちたい
@@ -40,7 +40,7 @@
 ###### MailHog
 
 ## テーブル設計
-![Table_design](https://github.com/user-attachments/assets/7eb83b45-cbed-4f81-9d70-51f81db72245)
+![Table_design](https://github.com/user-attachments/assets/7eb83b45-cbed-4f81-9d70-51f81db72245) width
 
 ## ER図
 ![ER](https://github.com/user-attachments/assets/f5fc6b97-d105-42d8-8177-1bcd56368654)
