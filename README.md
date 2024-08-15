@@ -47,7 +47,7 @@
    
 ## 環境構築
 ###### Dockerビルド
-###### 1. git clone git@github.com:TsuneoHakoyama/Rese.git
+###### 1. git clone git@github.com:TsuneoHakoyama/20240815_Hakoyama_Rese.git
 ###### 2. docker compose up -d --build 
 ###### 
 ###### Laravel環境構築
