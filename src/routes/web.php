@@ -5,6 +5,8 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShopController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +25,22 @@ Route::post('/register', [AuthController::class, 'store']);
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 
-Route::middleware('auth')->group(function () {
+Route::get('/email/verify', function () {
+  return view('auth.verify-email');
+  })->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+  $request->fulfill();
+  return redirect('/');
+  })->middleware(['auth', 'signed'])->name('verification.verify');
+
+  Route::post('/email/verification-notification', function (Request $request) {
+  $request->user()->sendEmailVerificationNotification();
+
+  return back()->with('message', 'Verification link sent!');
+  })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/logout', [AuthController::class, 'destroy']);
     Route::get('/', [ShopController::class, 'show'])->name('shop-all');
     Route::post('/search', [ShopController::class, 'search']);

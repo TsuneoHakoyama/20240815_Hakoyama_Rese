@@ -35,6 +35,9 @@
             <div class="message">
                 <p>会員登録ありがとうございます</p>
             </div>
+            <div class="sent-confirm">
+                <p>登録されたメールアドレスに確認メールを送信しました</p>
+            </div>
             <div class="button">
                 <a href="{{ route('login') }}">ログインする</a>
             </div>

@@ -109,11 +109,9 @@
                             </div>
                             <div class="more-info">
                                 <div class="for-detail">
-                                    <form action="/detail" method="get">
-                                        @csrf
-                                        <button type="submit">詳しくみる</button>
-                                        <input type="hidden" name="shop_id" value="{{ $my_favorite->id }}">
-                                    </form>
+                                    <div class="for-detail">
+                                        <a href="{{ route('detail', ['id' => $my_favorite->id]) }}">詳しくみる</a>
+                                    </div>
                                 </div>
                                 <div class="favorite">
                                     <form action="/delete" method="post">
